@@ -10,8 +10,18 @@ import CopyRight from '../../layout/CopyRight';
 import CustomTypography from '../../shared/Typography';
 import CustomButton from '../../shared/Button';
 import CustomLink from '../../shared/CustomLink';
+import {useHistory} from 'react-router-dom';
+import {useState} from 'react';
 
 const LoginForm = (props: any) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+
+  const handleSubmit = () => {
+    if (username && password !== null) history.push('/ChatScreen');
+  };
+
   return (
     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
       <Box
@@ -42,6 +52,8 @@ const LoginForm = (props: any) => {
             name='username'
             autoComplete='username'
             autoFocus
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             margin='normal'
@@ -52,6 +64,8 @@ const LoginForm = (props: any) => {
             type='password'
             id='password'
             autoComplete='current-password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <FormControlLabel
             control={<Checkbox value='remember' color='primary' />}
@@ -63,6 +77,7 @@ const LoginForm = (props: any) => {
             variant='contained'
             sx={{mt: 3, mb: 2}}
             buttonText='Sign In'
+            onClick={handleSubmit}
           />
           <Grid container>
             <Grid item xs>

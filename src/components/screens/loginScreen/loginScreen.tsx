@@ -10,7 +10,7 @@ const theme = createTheme();
 function LoginScreen() {
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    // const data = new FormData(event.currentTarget);
   };
 
   return (
